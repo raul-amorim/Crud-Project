@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import Table from '../component/Table'
-import Form from '../component/Form'
-import ModalForm from '../component/ModalForm'
-import { Button } from 'reactstrap'
-import { addQuestion, editQuestion, getList, removeQuestion } from '../service/mongo'
+import Table from '../Table'
+import Form from '../Form'
+import ModalForm from '../ModalForm'
+import ToastAlert from '../ToastAlert'
+import { Button, Fade } from 'reactstrap'
+import { addQuestion, editQuestion, getList, removeQuestion } from '../../service/mongo'
 
 const initialState = {
     questions: { _id: '', what: '', why: '', when: '', where: '', who: '', how: '', how_much: '' },
     list: []
 }
 
-export const UserCrud = () => {
+const Crud = () => {
 
-    const [questions, setQuestions] = useState
-        ({ _id: '', what: '', why: '', when: '', where: '', who: '', how: '', how_much: '' })
+    const [questions, setQuestions] = useState(initialState.questions)
 
     const [list, setList] = useState([])
 
     const [modal, setModal] = useState(false)
+
+    const [fadeToggle, setFadeToggle] = useState(false)
+
+    const [mensagemAlert, setMensagelAlert] = useState("")
 
     function clear() {
         setQuestions(initialState.questions)
@@ -34,8 +38,8 @@ export const UserCrud = () => {
             const request = {
                 what: data.what,
                 why: data.why,
-                where: data.where,
                 when: data.when,
+                where: data.where,
                 who: data.who,
                 how: data.how,
                 how_much: data.how_much
@@ -46,10 +50,13 @@ export const UserCrud = () => {
                 (await addQuestion(request))
             )
             clear();
+            setMensagelAlert("Sucesso!")
         } catch (error) {
+            setMensagelAlert("Erro!")
             console.log(error)
         } finally {
             updateList();
+            showToast();
         }
     }
 
@@ -61,10 +68,16 @@ export const UserCrud = () => {
     async function remove(questions) {
         await removeQuestion(questions._id)
         updateList()
+        showToast();
     }
 
     function toggleModal() {
         setModal(!modal)
+    }
+
+    function showToast(){
+        setFadeToggle(true)
+        setTimeout(() => {setFadeToggle(false)}, 2500)
     }
 
     useEffect(() => {
@@ -74,15 +87,16 @@ export const UserCrud = () => {
     return (
         <div >
             <h2>Metodologia 5W2H</h2>
-            <hr></hr>
+            <hr />
             <ModalForm isOpen={modal}>
                 <Form questions={questions} cancel={clear} save={save} />
             </ModalForm>
             <h4>Planos de Ação:</h4>
             <Button onClick={() => toggleModal()}>add</Button>
             <Table questionsList={list} remove={remove} update={updateField} />
+            <ToastAlert open={fadeToggle} mensagem={mensagemAlert}/>
         </div>
     )
 }
 
-export default UserCrud
+export default Crud

@@ -16,11 +16,11 @@ const Form = ({ questions, cancel, save }) => {
                 <label htmlFor="why">Why</label>
                 <Input tag={Field} id="why" name="why" />
 
-                <label htmlFor="when">When</label>
-                <Input tag={Field} id="when" name="when" />
-
                 <label htmlFor="where">Where</label>
                 <Input tag={Field} id="where" name="where" />
+
+                <label htmlFor="when">When</label>
+                <Input tag={Field} id="when" name="when" />
 
                 <label htmlFor="who">Who</label>
                 <Input tag={Field} id="who" name="who" />
