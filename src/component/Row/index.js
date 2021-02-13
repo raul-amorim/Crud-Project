@@ -1,9 +1,10 @@
-import React from 'react'
-import { Button } from 'reactstrap'
+import React from 'react';
+import { Button } from 'reactstrap';
+import './index.css';
 
 const Row = ({ questions, remove, update }) => {
     return (
-        <tr key={questions._id}>
+        <tr className="center" key={questions._id}>
             <td>{questions.what}</td>
             <td>{questions.why}</td>
             <td>{questions.where}</td>
@@ -12,12 +13,14 @@ const Row = ({ questions, remove, update }) => {
             <td>{questions.how}</td>
             <td>{questions.how_much}</td>
             <td>
-                <Button color="warning"onClick={() => update(questions)}>
-                    Edit
+                <div className="buttons">
+                <Button color="warning" outline onClick={() => update(questions)}>
+                    Editar
                     </Button>
-                <Button color="danger" onClick={() => remove(questions)}>
-                    Delete
+                <Button color="danger" outline onClick={() => remove(questions)}>
+                    Deletar
                     </Button>
+                </div>
             </td>
         </tr>
     )

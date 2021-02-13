@@ -1,0 +1,11 @@
+th{
+text-align: center;
+ position: sticky;
+ top: 0;
+ background-color: white;
+}
+
+.table{
+      position: relative;
+    border-radius: 6px;
+}

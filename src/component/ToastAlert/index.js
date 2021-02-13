@@ -1,9 +1,10 @@
 import React from 'react';
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
+import './index.css';
 
 const ToastAlert = ({ open, mensagem }) => {
     return (
-        <div>
+        <div className="toastr">
           <div className="p-3 my-2 rounded">
             <Toast isOpen={open}>
               <ToastBody>

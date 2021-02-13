@@ -1,0 +1,70 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 4vh 0;
+ 
+  
+}
+
+.table{
+      position: relative;
+      height: 70vh;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+     }
+  ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: linear-gradient(13deg, #b1b1b1 14%, #858585 64%);
+      border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(13deg, #b1b1b1 14%, #858585 64%);
+  }
+
+  ::-webkit-scrollbar-track {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: inset 7px 5px 12px #f0f0f0;
+  }
+
+.button{
+    width: 10rem;
+    cursor: pointer;
+}
+
+.actions{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    z-index: 100;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 2px -2px rgba(0, 0, 0, 0.5);
+}
+.header {
+       background-color: #ffffff;
+       background-image: none;
+       padding-top: 10px;
+       padding-bottom: 10px;
+       box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+       
+}
+
+body {
+       overflow: hidden;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgba(196, 133, 133, 0.446) 0%, rgb(177, 87, 87) 0%, rgb(139, 37, 38) 59%, rgba(112, 6, 8, 1) 100%);
+     font-family: 'Roboto',
+     sans-serif;
+}
+
+
+

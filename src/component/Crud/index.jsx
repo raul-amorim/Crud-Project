@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import Table from '../Table'
-import Form from '../Form'
-import ModalForm from '../ModalForm'
-import ToastAlert from '../ToastAlert'
-import { Button, Fade } from 'reactstrap'
-import { addQuestion, editQuestion, getList, removeQuestion } from '../../service/mongo'
+import React, { useEffect, useState } from 'react';
+import Table from '../Table';
+import Form from '../Form';
+import ModalForm from '../ModalForm';
+import ToastAlert from '../ToastAlert';
+import { Button, Fade } from 'reactstrap';
+import { addQuestion, editQuestion, getList, removeQuestion } from '../../service/mongo';
+import './index.css';
 
 const initialState = {
     questions: { _id: '', what: '', why: '', when: '', where: '', who: '', how: '', how_much: '' },
@@ -86,15 +87,24 @@ const Crud = () => {
 
     return (
         <div >
-            <h2>Metodologia 5W2H</h2>
-            <hr />
-            <ModalForm isOpen={modal}>
-                <Form questions={questions} cancel={clear} save={save} />
-            </ModalForm>
-            <h4>Planos de Ação:</h4>
-            <Button onClick={() => toggleModal()}>add</Button>
-            <Table questionsList={list} remove={remove} update={updateField} />
             <ToastAlert open={fadeToggle} mensagem={mensagemAlert}/>
+            <div className="header">
+                <h2>Metodologia 5W2H</h2>
+            </div>
+            <div className="container">
+                <ModalForm isOpen={modal}>
+                    <Form questions={questions} cancel={clear} save={save} />
+                </ModalForm>
+                <div className="wrapper">
+                    <div className="actions">
+                        <h4>Planos de Ação:</h4>
+                        <Button onClick={() => toggleModal()}>Adicionar</Button>
+                    </div>
+                    <div className="table">
+                        <Table questionsList={list} remove={remove} update={updateField} />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
